@@ -16,7 +16,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip3 install --user requirements_test.txt
+          pip3 install --user -r requirements_test.txt
 
       - name: Run test suite
         run: |
