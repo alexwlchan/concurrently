@@ -1,0 +1,9 @@
+[run]
+branch = True
+include =
+    concurrently.py
+    test_concurrently.py
+
+[report]
+show_missing = True
+fail_under = 100

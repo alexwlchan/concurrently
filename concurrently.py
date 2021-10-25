@@ -12,6 +12,8 @@ def concurrently(fn, fn_inputs, *, max_concurrency=5):
     Generates (input, output) tuples as the calls to ``fn`` complete.
 
     """
+    # Make sure we get a consistent iterator throughout, rather than
+    # getting the first element repeatedly.
     fn_inputs = iter(fn_inputs)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -32,18 +34,3 @@ def concurrently(fn, fn_inputs, *, max_concurrency=5):
             for input in itertools.islice(fn_inputs, len(done)):
                 fut = executor.submit(fn, input)
                 futures[fut] = input
-
-
-import time
-import random
-
-def doubler(input):
-    print(f"Started {input}")
-    time.sleep(random.randint(1, 10) / 100)
-    print(f"Finished {input}")
-    return input * 2
-
-
-if __name__ == '__main__':
-    for (input, output) in concurrently(doubler, range(10)):
-        print(f"{input} ~> {output}")
