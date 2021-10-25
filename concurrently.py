@@ -2,7 +2,7 @@ import concurrent.futures
 import itertools
 
 
-def concurrently(fn, fn_inputs, *, max_concurrency=5):
+def concurrently(fn, inputs, *, max_concurrency=5):
     """
     Calls the function ``fn`` on the values ``inputs``.
 
@@ -14,7 +14,7 @@ def concurrently(fn, fn_inputs, *, max_concurrency=5):
     """
     # Make sure we get a consistent iterator throughout, rather than
     # getting the first element repeatedly.
-    fn_inputs = iter(fn_inputs)
+    fn_inputs = iter(inputs)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {

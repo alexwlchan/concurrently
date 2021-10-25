@@ -21,7 +21,7 @@ It allows me to write code like:
 ```python
 from concurrently import concurrently
 
-for (input, output) in concurrently(fn=perform, fn_inputs=get_tasks_to_do()):
+for (input, output) in concurrently(fn=perform, inputs=get_tasks_to_do()):
     print(input, output)
 ```
 
@@ -36,6 +36,8 @@ I would recommend using this code instead of the code in the original blog post.
 ## Usage
 
 Copy and paste the file `concurrently.py` into your project.
+
+You can see examples in the [`examples` directory](examples).
 
 
 
