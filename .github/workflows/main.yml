@@ -20,7 +20,7 @@ jobs:
 
       - name: Check formatting
         run: |
-          black *.py
+          black .
           git diff --exit-code
 
       - name: Run test suite
