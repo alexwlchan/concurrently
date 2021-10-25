@@ -18,7 +18,7 @@ def sleepy_multiply(x, y):
     return x * y
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     inputs = [
         (1, 2),
         (2, 3),
@@ -31,5 +31,4 @@ if __name__ == '__main__':
     ]
 
     for ((x, y), output) in concurrently(lambda x: sleepy_multiply(*x), inputs=inputs):
-        print(x, '*', y, '=', output)
-
+        print(x, "*", y, "=", output)
