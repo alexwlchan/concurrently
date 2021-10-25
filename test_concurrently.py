@@ -29,13 +29,4 @@ def test_handles_iterator():
 def test_handles_list():
     result = set(concurrently(double, fn_inputs=[1, 3, 5, 7, 9, 11, 13]))
 
-    assert result == {
-        (1, 2),
-        (3, 6),
-        (5, 10),
-        (7, 14),
-        (9, 18),
-        (11, 22),
-        (13, 26)
-    }
-
+    assert result == {(1, 2), (3, 6), (5, 10), (7, 14), (9, 18), (11, 22), (13, 26)}
