@@ -34,3 +34,7 @@ def concurrently(fn, fn_inputs, *, max_concurrency=5):
             for input in itertools.islice(fn_inputs, len(done)):
                 fut = executor.submit(fn, input)
                 futures[fut] = input
+
+
+def triple(x):
+    return x * 3
