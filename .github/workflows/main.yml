@@ -18,6 +18,11 @@ jobs:
         run: |
           pip3 install --user -r requirements_test.txt
 
+      - name: Check formatting
+        run: |
+          black *.py
+          git diff --exit-code
+
       - name: Run test suite
         run: |
           coverage run -m pytest test_concurrently.py
