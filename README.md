@@ -13,7 +13,7 @@ This is fine for certain classes of task, but if `perform()` is heavily I/O boun
 If I could run multiple instances of `perform()` concurrently, the overall process would complete much faster.
 Task 1 could start, make a network request, then task 2 could start while task 1 is waiting.
 
-I wrote [my recipe for concurrent processing][blog] in a blog post in 2019, but the code was a little cumbersome to use.
+I wrote [my recipe for concurrent processing][blog] in a blog post in 2019, which explains how it works – but the code was a little cumbersome to use.
 This repo is a tidied up (and tested!) version of that code.
 
 It allows me to write code like:
