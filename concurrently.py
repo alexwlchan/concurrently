@@ -10,7 +10,7 @@ def concurrently(fn, inputs, *, max_concurrency=5):
     individual values in the iterable ``inputs``.
 
     Generates (input, output) tuples as the calls to ``fn`` complete.
-    
+
     See https://alexwlchan.net/2019/10/adventures-with-concurrent-futures/ for an explanation
     of how this function works.
 
