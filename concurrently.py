@@ -2,14 +2,14 @@ import concurrent.futures
 import itertools
 
 
-def concurrently(fn, inputs, *, max_concurrency=5):
+def concurrently(handler, inputs, *, max_concurrency=5):
     """
-    Calls the function ``fn`` on the values ``inputs``.
+    Calls the function ``handler`` on the values ``inputs``.
 
-    ``fn`` should be a function that takes a single input, which is the
+    ``handler`` should be a function that takes a single input, which is the
     individual values in the iterable ``inputs``.
 
-    Generates (input, output) tuples as the calls to ``fn`` complete.
+    Generates (input, output) tuples as the calls to ``handler`` complete.
 
     See https://alexwlchan.net/2019/10/adventures-with-concurrent-futures/ for an explanation
     of how this function works.
@@ -17,12 +17,12 @@ def concurrently(fn, inputs, *, max_concurrency=5):
     """
     # Make sure we get a consistent iterator throughout, rather than
     # getting the first element repeatedly.
-    fn_inputs = iter(inputs)
+    handler_inputs = iter(inputs)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {
-            executor.submit(fn, input): input
-            for input in itertools.islice(fn_inputs, max_concurrency)
+            executor.submit(handler, input): input
+            for input in itertools.islice(handler_inputs, max_concurrency)
         }
 
         while futures:
@@ -34,6 +34,6 @@ def concurrently(fn, inputs, *, max_concurrency=5):
                 original_input = futures.pop(fut)
                 yield original_input, fut.result()
 
-            for input in itertools.islice(fn_inputs, len(done)):
-                fut = executor.submit(fn, input)
+            for input in itertools.islice(handler_inputs, len(done)):
+                fut = executor.submit(handler, input)
                 futures[fut] = input

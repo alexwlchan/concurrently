@@ -21,7 +21,7 @@ It allows me to write code like:
 ```python
 from concurrently import concurrently
 
-for (input, output) in concurrently(fn=perform, inputs=get_tasks_to_do()):
+for (input, output) in concurrently(handler=perform, inputs=get_tasks_to_do()):
     print(input, output)
 ```
 

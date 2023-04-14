@@ -10,7 +10,7 @@ def double(x):
 
 
 def test_handles_iterator():
-    result = set(concurrently(double, inputs=range(10)))
+    result = set(concurrently(handler=double, inputs=range(10)))
 
     assert result == {
         (0, 0),
@@ -27,6 +27,6 @@ def test_handles_iterator():
 
 
 def test_handles_list():
-    result = set(concurrently(double, inputs=[1, 3, 5, 7, 9, 11, 13]))
+    result = set(concurrently(handler=double, inputs=[1, 3, 5, 7, 9, 11, 13]))
 
     assert result == {(1, 2), (3, 6), (5, 10), (7, 14), (9, 18), (11, 22), (13, 26)}
