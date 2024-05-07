@@ -26,5 +26,5 @@ def save_http_cat(status_code):
 if __name__ == "__main__":
     codes = [200, 201, 202, 301, 302, 400, 405, 410, 418, 420, 451, 500]
 
-    for (input, output) in concurrently(save_http_cat, inputs=codes):
+    for input, output in concurrently(save_http_cat, inputs=codes):
         print(input, output)
