@@ -30,5 +30,5 @@ if __name__ == "__main__":
         (6, 1),
     ]
 
-    for ((x, y), output) in concurrently(lambda x: sleepy_multiply(*x), inputs=inputs):
+    for (x, y), output in concurrently(lambda x: sleepy_multiply(*x), inputs=inputs):
         print(x, "*", y, "=", output)
