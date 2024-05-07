@@ -1,29 +1,42 @@
-on: push
+name: Run tests
+
+on:
+  push:
+    branches:
+    - main
+
+  pull_request:
+    branches:
+    - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
 
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.12"
 
       - name: Install dependencies
-        run: |
-          pip3 install --user -r requirements_test.txt
+        run: python3 -m pip install -r dev_requirements.txt
 
       - name: Check formatting
         run: |
-          black .
-          git diff --exit-code
+          black --check .
+
+          # E501 = line too long; anything up to 100-ish is fine in my book
+          # (the "ish" is intentional; see https://www.youtube.com/watch?v=wf-BqAjZb8M)
+          #
+          # E203/W503/W504 = this is where black and flake8 conflict,
+          # see https://black.readthedocs.io/en/stable/faq.html#why-are-flake8-s-e203-and-w503-violated
+          flake8 --ignore=E501,E203,W503 --extend-select=W504
 
       - name: Run test suite
         run: |
           coverage run -m pytest test_concurrently.py
-          coverage report
+          coverage report --skip-covered --fail-under=100
