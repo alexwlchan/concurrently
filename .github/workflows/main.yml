@@ -29,14 +29,8 @@ jobs:
 
       - name: Check formatting
         run: |
-          black --check .
-
-          # E501 = line too long; anything up to 100-ish is fine in my book
-          # (the "ish" is intentional; see https://www.youtube.com/watch?v=wf-BqAjZb8M)
-          #
-          # E203/W503/W504 = this is where black and flake8 conflict,
-          # see https://black.readthedocs.io/en/stable/faq.html#why-are-flake8-s-e203-and-w503-violated
-          flake8 --ignore=E501,E203,W503 --extend-select=W504
+          ruff check .
+          ruff format --check .
 
       - name: Run test suite
         run: |
