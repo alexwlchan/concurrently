@@ -12,5 +12,5 @@ pytest==8.2.0
     # via pytest-cov
 pytest-cov==6.0.0
     # via -r dev_requirements.in
-ruff==0.8.2
+ruff==0.8.3
     # via -r dev_requirements.in
