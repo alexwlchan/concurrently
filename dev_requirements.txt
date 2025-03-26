@@ -2,6 +2,8 @@
 #    uv pip compile dev_requirements.in --output-file dev_requirements.txt
 coverage[toml]==7.5.1
     # via pytest-cov
+exceptiongroup==1.2.2
+    # via pytest
 iniconfig==2.0.0
     # via pytest
 packaging==24.0
@@ -12,5 +14,9 @@ pytest==8.2.0
     # via pytest-cov
 pytest-cov==6.0.0
     # via -r dev_requirements.in
-ruff==0.11.0
+ruff==0.11.2
     # via -r dev_requirements.in
+tomli==2.2.1
+    # via
+    #   coverage
+    #   pytest
