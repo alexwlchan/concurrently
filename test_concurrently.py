@@ -4,12 +4,12 @@ import time
 from concurrently import concurrently
 
 
-def double(x):
+def double(x: int) -> int:
     time.sleep(random.random() / 100)
     return x * 2
 
 
-def test_handles_iterator():
+def test_handles_iterator() -> None:
     result = set(concurrently(handler=double, inputs=range(10)))
 
     assert result == {
@@ -26,7 +26,7 @@ def test_handles_iterator():
     }
 
 
-def test_handles_list():
+def test_handles_list() -> None:
     result = set(concurrently(handler=double, inputs=[1, 3, 5, 7, 9, 11, 13]))
 
     assert result == {(1, 2), (3, 6), (5, 10), (7, 14), (9, 18), (11, 22), (13, 26)}

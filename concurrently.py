@@ -1,8 +1,16 @@
+from collections.abc import Callable, Iterable
 import concurrent.futures
 import itertools
+import typing
 
 
-def concurrently(handler, inputs, *, max_concurrency=5):
+In = typing.TypeVar("In")
+Out = typing.TypeVar("Out")
+
+
+def concurrently(
+    handler: Callable[[In], Out], inputs: Iterable[In], *, max_concurrency: int = 5
+) -> Iterable[tuple[In, Out]]:
     """
     Calls the function ``handler`` on the values ``inputs``.
 
