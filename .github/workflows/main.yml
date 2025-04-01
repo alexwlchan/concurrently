@@ -32,6 +32,9 @@ jobs:
           ruff check .
           ruff format --check .
 
+      - name: Check types
+        run: mypy *.py --strict
+
       - name: Run test suite
         run: |
           coverage run -m pytest test_concurrently.py
