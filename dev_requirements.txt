@@ -6,7 +6,7 @@ exceptiongroup==1.2.2
     # via pytest
 iniconfig==2.1.0
     # via pytest
-mypy==1.17.1
+mypy==1.18.1
     # via -r dev_requirements.in
 mypy-extensions==1.0.0
     # via mypy
