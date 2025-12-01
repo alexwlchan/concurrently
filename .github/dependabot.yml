@@ -13,4 +13,5 @@ updates:
       day: "monday"
       time: "09:00"
     ignore:
+      - dependency-name: "mypy"
       - dependency-name: "ruff"
