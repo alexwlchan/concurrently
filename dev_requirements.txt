@@ -2,11 +2,11 @@
 #    uv pip compile dev_requirements.in --output-file dev_requirements.txt
 coverage[toml]==7.10.6
     # via pytest-cov
-exceptiongroup==1.2.2
-    # via pytest
 iniconfig==2.1.0
     # via pytest
-mypy==1.18.2
+librt==0.6.3
+    # via mypy
+mypy==1.19.0
     # via -r dev_requirements.in
 mypy-extensions==1.0.0
     # via mypy
@@ -24,10 +24,5 @@ pytest-cov==7.0.0
     # via -r dev_requirements.in
 ruff==0.13.2
     # via -r dev_requirements.in
-tomli==2.2.1
-    # via
-    #   coverage
-    #   mypy
-    #   pytest
 typing-extensions==4.13.0
     # via mypy
